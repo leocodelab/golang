@@ -6,7 +6,13 @@ import (
 )
 
 func HandleFunc(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "Hello, World!")
+	if r.URL.Path == "/" {
+		fmt.Fprintln(w, "index")
+	} else if r.URL.Path == "/about" {
+		fmt.Fprintln(w, "/about")
+	} else {
+		fmt.Fprintln(w, "error")
+	}
 }
 
 func main() {
